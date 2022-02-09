@@ -44,7 +44,12 @@ const Card = ({
   },
 }) => {
   return (
-    <CardContainer layout>
+    <CardContainer
+      layout
+      animate={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
+    >
       <Title>{title}</Title>
       <Image
         src={`https://image.tmdb.org/t/p/w500/${poster_path}`}

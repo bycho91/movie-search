@@ -4,7 +4,7 @@ import axios from "axios";
 import Card from "./components/Card";
 import GenreFilter from "./components/GenreFilter";
 import SearchFilter from "./components/SearchFilter";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const baseUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US&page=1`;
 
@@ -12,6 +12,7 @@ const MainContainer = styled.div`
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
+  overflow-y: hidden;
 `;
 
 const CardsContainer = styled(motion.div)`
@@ -73,9 +74,11 @@ const App = () => {
         />
       </FiltersContainer>
       <CardsContainer layout>
-        {filtered.map((movie) => (
-          <Card key={movie.id} movie={movie} />
-        ))}
+        <AnimatePresence>
+          {filtered.map((movie) => (
+            <Card key={movie.id} movie={movie} />
+          ))}
+        </AnimatePresence>
       </CardsContainer>
     </MainContainer>
   );
