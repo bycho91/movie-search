@@ -1,1 +1,1 @@
-# Simple movie search App using themoviedb.org API
+# Simple movie search app using themoviedb.org API
